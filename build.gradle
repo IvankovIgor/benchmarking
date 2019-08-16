@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id "me.champeau.gradle.jmh" version "0.4.8"
+}
+
+group 'org.ivankov'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+dependencies {
+    jmh group: 'org.openjdk.jmh', name: 'jmh-core', version: '1.21'
+    jmh group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: '1.21'
+}
+
+jmh {
+    duplicateClassesStrategy = 'WARN'
+    resultFormat = "JSON"
+}
